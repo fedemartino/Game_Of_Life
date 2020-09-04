@@ -13,7 +13,7 @@ namespace GameOfLife
                 {
                     if(b.GetValue(x,y))
                     {
-                        s.Append("|0|");
+                        s.Append("|X|");
                     }
                     else
                     {
