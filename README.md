@@ -22,9 +22,10 @@ En cada iteración del tiempo (generación) una célula estará viva o muerta se
 ## Parte 1
 Como tributo a Conway hoy vamos a crear este juego en consola! Para ello te vamos a proveer de varios code [snippets](https://en.wikipedia.org/wiki/Snippet_(programming)) y será tu trabajo asignarlos a la clase correcta cumpliendo con Expert y SRP. 
 
-El objetivo será desarrollar este juego mediante objetos diferentes, cada uno con una resposnabilidad única (SRP). El tablero deberá ser cargado a partir de un archivo de texto y luego el avance del juego deberá ser impreso en pantalla mediante consola. Debes tener en cuenta que hoy se pide que el juego se lea desde un archivo y se imprima en consola, pero mañana podremos pedirles que se lea de una fuente diferente y se muestre en pantalla por otro medio :wink:
+El objetivo será desarrollar este juego mediante objetos diferentes, cada uno con una resposnabilidad única (SRP). El tablero deberá ser cargado a partir de un archivo de texto y luego el avance del juego deberá ser impreso en pantalla mediante consola. 
+> Debes tener en cuenta que hoy se pide que el juego se lea desde un archivo y se imprima en consola, pero mañana podremos pedirles que se lea de una fuente diferente y se muestre en pantalla por otro medio :wink:
 
-> Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.
+**Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.**
 
 Si todo ha funcionado correctamente, tu resultado deberia verse algo similar a esto:
 
@@ -33,7 +34,7 @@ Si todo ha funcionado correctamente, tu resultado deberia verse algo similar a e
 ## Code Snippets
 A continuación se presentan fragmentos de código suelto (snippets) que podrás reutilizar en tu solución.
 
-:warning: Atención!! Estos fragmentos de código son genéricos y no funcionaran simplemente haciendo copy/paste. Si bien la estructura general y la mayoría del código no debería ser necesario modificarlo, deberan ser adaptados a tu solución propuesta.
+:warning: **Atención!!** Estos fragmentos de código son genéricos y no funcionaran simplemente haciendo copy/paste. Si bien la estructura general y la mayoría del código no debería ser necesario modificarlo, deberan ser adaptados a tu solución propuesta.
 
 ### Lógica de juego
 El siguiente code snippet contiene la lógica necesaria para procesar una generación del juego. 
