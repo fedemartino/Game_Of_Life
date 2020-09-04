@@ -19,12 +19,13 @@ En cada iteración del tiempo (generación) una célula estará viva o muerta se
 * Una célula viva con más de 3 vecinos vivos muere, por sobrepoblación.
 * Una célula muerta con exactamente 3 vecinos vivos se convierte en una célula viva, por reproducción
 
-### Parte 1
+## Parte 1
 Como tributo a Conway hoy vamos a crear este juego en consola! Para ello te vamos a proveer de varios code [snippets](https://en.wikipedia.org/wiki/Snippet_(programming)) y será tu trabajo asignarlos a la clase correcta cumpliendo con Expert y SRP. 
 
 Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.
 
-## Lógica de juego
+## Code Snippets
+### Lógica de juego
 El siguiente code snippet contiene la lógica necesaria para procesar una generación del juego. 
 Se asume: 
 * Que el tablero es un array de 2 dimensiones de booleanos, donde ```true``` indica una célula viva y ```false``` indica una célula muerta.
@@ -79,4 +80,39 @@ for (int x = 0; x < boardWidth; x++)
 }
 gameBoard = cloneboard;
 cloneboard = new bool[boardWidth, boardHeight];
+```
+
+### Leer Archivo
+Este snippet muestra como leer un archivo y crear un array bi-dimensional de booleanos (```bool[,]```) con el contenido. Se asume que cada linea del archivo corresponde a una fila de la matriz y cada caracter de la fila corresponde a un elemento de la fila correspondiente de la matriz. Tambien se asume que el archivo contiene solamente los caracteres ```1``` y ```0``` correspondientes a ```true``` y ```false``` respectivamente y que todas las filas son de igual largo. 
+Por ejemplo, el siguiente archivo de texto:
+```
+101
+010
+101
+```
+
+se convierte en la siguiente matriz:
+```csharp
+bool[3,3] {
+    {true, false, true},
+    {false, true, false},
+    {true, false, true}
+};
+```
+Snippet:
+```csharp
+string url = "ruta del archivo";
+string content = File.ReadAllText(url);
+string[] contentLines = content.Split('\n');
+bool[,] board = new bool[contentLines.Length, contentLines[0].Length];
+for (int  y=0; y<contentLines.Length;y++)
+{
+    for (int x=0; x<contentLines[y].Length; x++)
+    {
+        if(contentLines[y][x]=='1')
+        {
+            board[x,y]=true;
+        }
+    }
+}
 ```
