@@ -116,3 +116,35 @@ for (int  y=0; y<contentLines.Length;y++)
     }
 }
 ```
+
+### Imprimir Tablero
+Aqui se muestra como imprimir un tablero por consola. Observa que este código requiere invocar el snippet la lógica de Juego
+
+```csharp
+bool[,] b //variable que representa el tablero
+int width //variabe que representa el ancho del tablero
+int height //variabe que representa altura del tablero
+While (true)
+{
+    Console.Clear();
+    StringBuilder s = new StringBuilder();
+    for (int y = 0; y<height;y++)
+    {
+        for (int x = 0; x<width; x++)
+        {
+            if(b.GetValue(x,y))
+            {
+                s.Append("|X|");
+            }
+            else
+            {
+                s.Append("___");
+            }
+        }
+        s.Append("\n");
+    }
+    Console.WriteLine(s.ToString());
+    //Invocar método para calcular siguiente generación
+    Thread.Sleep(300);
+}
+```csharp
