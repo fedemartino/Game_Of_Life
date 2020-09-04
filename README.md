@@ -24,6 +24,10 @@ Como tributo a Conway hoy vamos a crear este juego en consola! Para ello te vamo
 
 Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.
 
+Si todo ha funcionado correctamente, tu resultado deberia verse algo similar a esto:
+
+![](./console-gif-GoL.gif)
+
 ## Code Snippets
 A continuación se presentan fragmentos de código suelto (snippets) que podrás reutilizar en tu solución.
 
@@ -151,4 +155,4 @@ While (true)
     //Invocar método para calcular siguiente generación
     Thread.Sleep(300);
 }
-```csharp
+```
