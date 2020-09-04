@@ -71,7 +71,7 @@ for (int x = 0; x < boardWidth; x++)
         }
         else if (gameBoard[x,y] && aliveNeighbors > 3) 
         {
-            //CCelula muerde por sobrepoblación
+            //Celula muere por sobrepoblación
             cloneboard[x,y] = false; 
         }
         else if (!gameBoard[x,y] && aliveNeighbors == 3) 
@@ -94,20 +94,26 @@ cloneboard = new bool[boardWidth, boardHeight];
 Este snippet muestra como leer un archivo y crear un array bi-dimensional de booleanos (```bool[,]```) con el contenido. Se asume que cada linea del archivo corresponde a una fila de la matriz y cada caracter de la fila corresponde a un elemento de la fila correspondiente de la matriz. Tambien se asume que el archivo contiene solamente los caracteres ```1``` y ```0``` correspondientes a ```true``` y ```false``` respectivamente y que todas las filas son de igual largo. 
 Por ejemplo, el siguiente archivo de texto:
 ```
-101
-010
-101
+100
+011
+110
 ```
 
 se convierte en la siguiente matriz:
 ```csharp
 bool[3,3] {
-    {true, false, true},
-    {false, true, false},
-    {true, false, true}
+    {true, false, false},
+    {false, true, true},
+    {true, true, false}
 };
 ```
-Snippet:
+
+> Esta forma incluso tiene nombre y se llama glider
+>
+> ![](https://upload.wikimedia.org/wikipedia/commons/f/f2/Game_of_life_animated_glider.gif)
+
+Snippet de código:
+
 ```csharp
 string url = "ruta del archivo";
 string content = File.ReadAllText(url);
@@ -140,7 +146,7 @@ While (true)
     {
         for (int x = 0; x<width; x++)
         {
-            if(b.GetValue(x,y))
+            if(b[x,y])
             {
                 s.Append("|X|");
             }
@@ -152,7 +158,9 @@ While (true)
         s.Append("\n");
     }
     Console.WriteLine(s.ToString());
+    //=================================================
     //Invocar método para calcular siguiente generación
+    //=================================================
     Thread.Sleep(300);
 }
 ```
