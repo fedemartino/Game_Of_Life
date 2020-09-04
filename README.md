@@ -13,7 +13,7 @@ El juego de la vida consiste en un autómata celular con unas pocas reglas muy s
 El universo es una grilla ortogonal de dos dimensiones, donde cada espacio de la grilla representa una única célula. 
 Cada célula puede estar viva o muerta. 
 Cada una de estas células tendra 8 vecinos. 
-En cada iteración del tiempo (turno) una célula estará viva o muerta según la cantidad de vecinos vivos o muertos que tenga. Siguiendo estas reglas:
+En cada iteración del tiempo (generación) una célula estará viva o muerta según la cantidad de vecinos vivos o muertos que tenga. Siguiendo estas reglas:
 * Una célula viva con menos de 2 vecinos vivos muere, por soledad.
 * Una célula viva con 2 o 3 vecinos vivos sobrevive a la siguiente generación.
 * Una célula viva con más de 3 vecinos vivos muere, por sobrepoblación.
@@ -23,3 +23,60 @@ En cada iteración del tiempo (turno) una célula estará viva o muerta según l
 Como tributo a Conway hoy vamos a crear este juego en consola! Para ello te vamos a proveer de varios code [snippets](https://en.wikipedia.org/wiki/Snippet_(programming)) y será tu trabajo asignarlos a la clase correcta cumpliendo con Expert y SRP. 
 
 Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.
+
+## Lógica de juego
+El siguiente code snippet contiene la lógica necesaria para procesar una generación del juego. 
+Se asume: 
+* Que el tablero es un array de 2 dimensiones de booleanos, donde ```true``` indica una célula viva y ```false``` indica una célula muerta.
+* El objeto ```gameBoard``` contiene un tablero ya cargado con todos los valores asignados.
+
+```csharp
+bool[,] gameBoard = /* contenido del tablero */;
+int boardWidth = gameBoard.GetLength(0);
+int boardHeight = gameBoard.GetLength(1);
+
+bool[,] cloneboard = new bool[boardWidth, boardHeight];
+for (int x = 0; x < boardWidth; x++)
+{
+    for (int y = 0; y < boardHeight; y++)
+    {
+        int aliveNeighbors = 0;
+        for (int i = x-1; i<=x+1;i++)
+        {
+            for (int j = y-1;j<=y+1;j++)
+            {
+                if(i>=0 && i<boardWidth && j>=0 && j < boardHeight && gameBoard[i,j])
+                {
+                    aliveNeighbors++;
+                }
+            }
+        }
+        if(gameBoard[x,y])
+        {
+            aliveNeighbors--;
+        }
+        if (gameBoard[x,y] && aliveNeighbors < 2) 
+        {
+            //Celula muere por baja población
+            cloneboard[x,y] = false; 
+        }
+        else if (gameBoard[x,y] && aliveNeighbors > 3) 
+        {
+            //CCelula muerde por sobrepoblación
+            cloneboard[x,y] = false; 
+        }
+        else if (!gameBoard[x,y] && aliveNeighbors == 3) 
+        {
+            //Celula nace por reproducción 
+            cloneboard[x,y] = true; 
+        }
+        else
+        {
+            //Celula mantiene el estado que tenía
+            cloneboard[x,y] = gameBoard[x,y];
+        }
+    }
+}
+gameBoard = cloneboard;
+cloneboard = new bool[boardWidth, boardHeight];
+```
