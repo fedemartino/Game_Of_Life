@@ -5,7 +5,9 @@
 ### Programación II
 
 ## Conway's Game of Life
-John Conway fue un matemático inglés muy conocido por sus aportes matemáticos en diversas áreas, pero lo que realmente lo hizo famoso fue su creación lúdica: El juego de la vida. 
+[John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) fue un matemático inglés muy conocido por sus aportes matemáticos en diversas áreas, pero lo que realmente lo hizo famoso fue su creación lúdica: [juego de la vida](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). 
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
 
 El juego de la vida consiste en un autómata celular con unas pocas reglas muy simples. 
 El universo es una grilla ortogonal de dos dimensiones, donde cada espacio de la grilla representa una única célula. 
