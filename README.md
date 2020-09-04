@@ -25,6 +25,10 @@ Como tributo a Conway hoy vamos a crear este juego en consola! Para ello te vamo
 Recuerda agregar comentarios a todas tus clases indicando si cumplen o no con SRP y Expert. Deberás justificar adecuadamente por que crees que cumple o no.
 
 ## Code Snippets
+A continuación se presentan fragmentos de código suelto (snippets) que podrás reutilizar en tu solución.
+
+:warning: Atención!! Estos fragmentos de código son genéricos y no funcionaran simplemente haciendo copy/paste. Si bien la estructura general y la mayoría del código no debería ser necesario modificarlo, deberan ser adaptados a tu solución propuesta.
+
 ### Lógica de juego
 El siguiente code snippet contiene la lógica necesaria para procesar una generación del juego. 
 Se asume: 
