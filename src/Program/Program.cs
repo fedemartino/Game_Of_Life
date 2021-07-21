@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.IO;
 
 namespace GameOfLife
 {
@@ -7,20 +8,18 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            string boardPath = @"..\..\board.txt";
+            string boardPath = Path.Combine("..", "..","board.txt");
             bool[,] board = BoardImporter.ImportBoard(boardPath); 
             Board b = new Board(board.GetLength(0), board.GetLength(1), board);
             Motor m = new Motor(b);
-            Console.Clear();
-            Console.WriteLine(BoardPrinter.PrintBoard(m.Board));
-            Thread.Sleep(1000);
-            Console.Clear();
+            BoardPrinter p = new BoardPrinter("|__", "|XX");
+            
             for (int i = 0; i < 50; i++)
             {
-                m.NextStep();
                 Console.Clear();
-                Console.WriteLine(BoardPrinter.PrintBoard(m.Board));
+                Console.WriteLine(p.PrintBoard(m.Board));
                 Thread.Sleep(300);
+                m.NextStep();
                 
             }
         }
