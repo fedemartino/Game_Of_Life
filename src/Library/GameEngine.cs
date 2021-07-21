@@ -1,10 +1,10 @@
 namespace GameOfLife
 {
-    public class Motor
+    public class GameOfLifeEngine : IGameEngine
     {
         public Board Board {get;private set;}
         private Board cloneboard;
-        public Motor(Board board)
+        public GameOfLifeEngine(Board board)
         {
             this.Board = board;
             this.cloneboard = new Board(board.Height,board.Height);
@@ -52,9 +52,18 @@ namespace GameOfLife
                     }
                 }
             }
-            this.Board = this.cloneboard;
+            CopyToBoard(this.cloneboard, this.Board);
             this.cloneboard = new Board(this.Board.Width, this.Board.Height);
         }
-        
+        private void CopyToBoard(Board fromBoard, Board toBoard)
+        {
+            for (int x = 0; x < fromBoard.Width; x++)
+            {
+                for (int y = 0; y < fromBoard.Height; y++)
+                {
+                    toBoard.SetValue(x, y, fromBoard.GetValue(x, y));
+                }
+            }
+        }
     }
 }

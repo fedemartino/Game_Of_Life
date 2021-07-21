@@ -9,18 +9,17 @@ namespace GameOfLife
         static void Main(string[] args)
         {
             string boardPath = Path.Combine("..", "..","board.txt");
-            bool[,] board = BoardImporter.ImportBoard(boardPath); 
-            Board b = new Board(board.GetLength(0), board.GetLength(1), board);
-            Motor m = new Motor(b);
-            BoardPrinter p = new BoardPrinter("|__", "|XX");
+            bool[,] rawBoard = BoardImporter.ImportBoard(boardPath); 
+            Board board = new Board(rawBoard.GetLength(0), rawBoard.GetLength(1), rawBoard);
+            IGameEngine gameOfLife = new GameOfLifeEngine(board);
+            BoardPrinter printer = new BoardPrinter("|__", "|XX");
             
             for (int i = 0; i < 50; i++)
             {
                 Console.Clear();
-                Console.WriteLine(p.PrintBoard(m.Board));
+                Console.WriteLine(printer.PrintBoard(board));
                 Thread.Sleep(300);
-                m.NextStep();
-                
+                gameOfLife.NextStep();
             }
         }
     }
